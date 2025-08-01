@@ -1,0 +1,16 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Cat Facts";
+}
+
+<h1>Cat Fact Generator</h1>
+
+<form method="post">
+    <button type="submit" class="btn btn-primary">Pobierz fakt o kocie</button>
+</form>
+
+@if (Model.CatFact != null)
+{
+    <p><strong>Fakt:</strong> @Model.CatFact</p>
+}
