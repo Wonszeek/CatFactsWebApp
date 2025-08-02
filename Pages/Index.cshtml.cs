@@ -15,6 +15,8 @@ public class IndexModel : PageModel
 
     [BindProperty]
     public string? CatFact { get; set; }
+    public string[]? AllFacts { get; set; }
+
 
     public void OnGet() { }
 
@@ -24,4 +26,10 @@ public class IndexModel : PageModel
         await _fileWriter.AppendFactAsync(CatFact);
         return Page();
     }
+    public async Task<IActionResult> OnPostShowHistoryAsync()
+    {
+        AllFacts = await _fileWriter.ReadAllFactsAsync();
+        return Page();
+    }
+
 }

@@ -14,3 +14,19 @@
 {
     <p><strong>Fakt:</strong> @Model.CatFact</p>
 }
+
+<form method="post" asp-page-handler="ShowHistory">
+    <button type="submit">Pokaż historię faktów</button>
+</form>
+
+@if (Model.AllFacts != null && Model.AllFacts.Length > 0)
+{
+    <h3>Historia faktów o kotach:</h3>
+    <ul>
+        @foreach (var fact in Model.AllFacts)
+        {
+            <li>@fact</li>
+        }
+    </ul>
+}
+

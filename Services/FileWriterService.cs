@@ -8,4 +8,12 @@ public class FileWriterService : IFileWriterService
     {
         await File.AppendAllTextAsync(FilePath, fact + Environment.NewLine);
     }
+    public async Task<string[]> ReadAllFactsAsync()
+    {
+        if (!File.Exists(FilePath))
+            return Array.Empty<string>();
+
+        return await File.ReadAllLinesAsync(FilePath);
+    }
+
 }
